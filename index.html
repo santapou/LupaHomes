@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupa Homes - Find Your Dream Property</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://i.imgur.com/BxTMSIQ.png" alt="Lupa Homes" class="logo-img">
+                <span>Lupa Homes</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#houses" class="nav-link">Houses</a></li>
+                <li><a href="#apartments" class="nav-link">Apartments</a></li>
+                <li><a href="#lots" class="nav-link">Lots</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Find Your Perfect Home</h1>
+            <p class="hero-subtitle">Discover luxury properties in the Philippines</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search location, property type..." id="searchInput">
+                <button class="search-btn" onclick="searchProperties()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Properties</button>
+                <button class="filter-tab" data-filter="house">Houses</button>
+                <button class="filter-tab" data-filter="apartment">Apartments</button>
+                <button class="filter-tab" data-filter="lot">Lots</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="houses" class="properties-section">
+        <div class="container">
+            <div class="properties-grid" id="propertyGrid"></div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-overlay"></div>
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About Lupa Homes</h2>
+                <p class="about-text">We are dedicated to helping you find your dream property in the Philippines. With years of experience in real estate, we provide premium listings of houses, apartments, and lots across the country.</p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>500+</h3>
+                        <p>Properties Listed</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>1000+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>50+</h3>
+                        <p>Cities Covered</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">📧</div>
+                        <h3>Email</h3>
+                        <p>info@lupahomes.com</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📱</div>
+                        <h3>Phone</h3>
+                        <p>+63 123 456 7890</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <h3>Location</h3>
+                        <p>Manila, Philippines</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div id="propertyModal" class="property-modal">
+        <div class="modal-overlay" onclick="closePropertyModal()"></div>
+        <div class="modal-container">
+            <button class="modal-close" onclick="closePropertyModal()">&times;</button>
+            
+            <div class="modal-gallery">
+                <div class="gallery-main">
+                    <img id="mainImage" src="" alt="">
+                </div>
+                <div class="gallery-thumbs" id="galleryThumbs"></div>
+            </div>
+
+            <div class="modal-details">
+                <span class="modal-type" id="modalType"></span>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-location" id="modalLocation"></p>
+                
+                <div class="modal-price" id="modalPrice"></div>
+                
+                <div class="modal-specs" id="modalSpecs"></div>
+                
+                <div class="modal-description" id="modalDescription"></div>
+                
+                <div class="modal-features">
+                    <h3>Features</h3>
+                    <ul id="modalFeatures"></ul>
+                </div>
+                
+                <div class="modal-contact">
+                    <h3>Contact Owner</h3>
+                    <form class="owner-contact-form" id="ownerContactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Your Phone" required>
+                        <textarea placeholder="Message to owner..." rows="4" required></textarea>
+                        <button type="submit" class="contact-owner-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Lupa Homes</h3>
+                    <p>Your trusted partner in finding the perfect property.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#houses">Houses</a></li>
+                        <li><a href="#apartments">Apartments</a></li>
+                        <li><a href="#lots">Lots</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:info@lupahomes.com">info@lupahomes.com</a></li>
+                        <li><a href="tel:+63123456789">+63 123 456 7890</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-credits">
+                <p>Made by PNJKIS GRADE 9 ISHI</p>
+                <p>Kimpara, Alce</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lupa Homes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
