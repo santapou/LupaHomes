@@ -307,8 +307,8 @@ function searchProperties() {
     renderProperties(currentFilter, searchTerm);
 }
 
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
 
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
